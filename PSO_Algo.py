@@ -1,3 +1,5 @@
+import numpy as np
+
 class PSO():
   def __init__(self, benchmark, ideal_target, error_threshold, num_particles,
                 a_const = 0.9, b_const= 2, c_const = 2):
