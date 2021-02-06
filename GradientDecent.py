@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import pylab
 from matplotlib import cm
 import matplotlib
 from mpl_toolkits.mplot3d import Axes3D
@@ -45,14 +46,6 @@ print(Y.shape)
 print(Z.shape)
 print(X.shape)
 
-figRos = plt.figure(figsize=(12, 7))
-axRos = figRos.gca(projection='3d')
-surf = axRos.plot_surface(X, Y, Z, cmap=cm.gist_heat_r,
-                       linewidth=0, antialiased=False)
-axRos.set_zlim(0, 200)
-figRos.colorbar(surf, shrink=0.5, aspect=10)
-plt.savefig('math.png')
-
 """
 def animateImage(index):
     print(index)
@@ -81,7 +74,7 @@ animated.save('GradientDescentRosenbrock.gif')
 i = 0
 l = 0
 for vector in history:
-    if i%50 == 0:
+    if i%1 == 0:
         fig = plt.figure(figsize=(15, 10))
         ax = fig.gca(projection='3d')
         ax.plot_surface(X, Y, Z, cmap=cm.coolwarm,linewidth=0, antialiased=False, alpha=0.75)
@@ -89,6 +82,8 @@ for vector in history:
         ax.view_init(30, -70)
         plt.tight_layout()
         plt.savefig('images/' + str(l) + '.png')
+        pylab.close(fig)
+        gc.collect()
         l+=1
     i+=1
     print(i)
